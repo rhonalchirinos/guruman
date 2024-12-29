@@ -26,5 +26,5 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
 
       - name: Php Pest
-        run: ./vendor/bin/pest --cache-result --no-output --cache-directory=./cache 
+        run: ./vendor/bin/pest --cache-result --no-output --cache-directory=./cache --min 
 
