@@ -1,0 +1,20 @@
+name: Guru Man
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Greet all
+        run: echo "Hola mundo!"
+
+      - name: Seed all files
+        run: ls -la 
+
+      
