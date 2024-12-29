@@ -25,8 +25,5 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
 
-      - name: Greet all
-        run: echo "Hola mundo!"
-
-      - name: Seed all files
-        run: ls -la
+      - name: Php Pest
+        run: ./vendor/bin/pest
