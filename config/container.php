@@ -64,9 +64,9 @@ $container->set(BuilderAction::class, fn(ContainerInterface $container) =>  new 
 /**
  *  Rick And Morty injections 
  */
-$container->set(LocationApiProxy::class, fn($container) =>  new LocationApiProxy(new LocationApiFacade(),    $container->get(CacheInterface::class)));
-$container->set(CharacterApiProxy::class, fn($container) =>  new CharacterApiProxy(new CharacterApiFacade(),    $container->get(CacheInterface::class)));
-$container->set(EpisodeApiProxy::class, fn($container) =>  new EpisodeApiProxy(new EpisodeApiFacade(),    $container->get(CacheInterface::class)));
+$container->set(LocationApiProxy::class, fn($container) =>  new LocationApiProxy(new LocationApiFacade(), $container->get(CacheInterface::class)));
+$container->set(CharacterApiProxy::class, fn($container) =>  new CharacterApiProxy(new CharacterApiFacade(), $container->get(CacheInterface::class)));
+$container->set(EpisodeApiProxy::class, fn($container) =>  new EpisodeApiProxy(new EpisodeApiFacade(), $container->get(CacheInterface::class)));
 $container->set(
     RickAndMortyUseCase::class,
     fn($container) => new RickAndMortyUseCase($container->get(LocationApiProxy::class), $container->get(CharacterApiProxy::class), $container->get(EpisodeApiProxy::class))
