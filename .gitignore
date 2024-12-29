@@ -1,0 +1,75 @@
+# Directorio de dependencias de Composer
+/vendor/
+
+# Archivos de Composer
+composer.lock
+
+# Archivos de configuración sensibles
+.env
+.env.local
+.env.*.local
+*.ini
+
+# Logs
+*.log
+logs/
+storage/logs/
+
+# Caché
+cache/
+storage/cache/
+storage/framework/
+
+# Directorios temporales
+tmp/
+temp/
+storage/temp/
+
+# Archivos de sesión
+storage/sessions/
+
+# Subidas
+storage/uploads/
+uploads/
+
+# Testeo (PHPUnit)
+phpunit.xml
+phpunit.xml.dist
+
+# Archivos de IDEs
+.vscode/
+.idea/
+*.iml
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Composer PHAR
+composer.phar
+
+# Claves SSH
+*.pem
+*.key
+
+# Archivos compilados
+*.o
+*.out
+*.class
+*.pyc
+*.pyo
+*.pyd
+
+# Imágenes generadas por el sistema
+public/storage
+
+# Caches de paquetes
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos generados por el servidor
+*.log
+error_log
