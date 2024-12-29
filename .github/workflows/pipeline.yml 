@@ -1,0 +1,16 @@
+name: Guru Man
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        run: \
+          echo "Hola mundo!"
