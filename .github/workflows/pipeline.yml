@@ -62,9 +62,6 @@ jobs:
             vendor
           restore-keys: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
 
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
-
       - name: Php lint
         run: composer lint-ci
 
@@ -93,9 +90,6 @@ jobs:
             ~/.composer/cache
             vendor
           restore-keys: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
-
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
 
       - name: Php Pest
         run: composer test-ci
