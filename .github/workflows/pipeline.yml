@@ -12,12 +12,33 @@ concurrency:
 jobs:
   composer:
     runs-on: ubuntu-20.04
+
     strategy:
       matrix:
         php-version: [8.4]
+
+    env:
+      extensions: mbstring, intl, pdo_mysql
+      key: cache-v1
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup cache environment
+        id: extcache
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, intl, pdo_mysql
+          key: ${{ env.key }}
+
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.extcache.outputs.dir }}
+          key: ${{ steps.extcache.outputs.key }}
+          restore-keys: ${{ steps.extcache.outputs.key }}
 
       - name: Setup PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
@@ -25,7 +46,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl, pdo_mysql
 
-      - name: Cache extensions
+      - name: Cache composer dependencies
         uses: actions/cache@v4
         with:
           key: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
@@ -43,9 +64,29 @@ jobs:
     strategy:
       matrix:
         php-version: [8.4]
+
+    env:
+      extensions: mbstring, intl, pdo_mysql
+      key: cache-v1
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup cache environment
+        id: extcache
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, intl, pdo_mysql
+          key: ${{ env.key }}
+
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.extcache.outputs.dir }}
+          key: ${{ steps.extcache.outputs.key }}
+          restore-keys: ${{ steps.extcache.outputs.key }}
 
       - name: Setup PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
@@ -53,7 +94,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl, pdo_mysql
 
-      - name: Cache extensions
+      - name: Cache composer dependencies
         uses: actions/cache@v4
         with:
           key: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
@@ -72,9 +113,28 @@ jobs:
       matrix:
         php-version: [8.4]
 
+    env:
+      extensions: mbstring, intl, pdo_mysql
+      key: cache-v1
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup cache environment
+        id: extcache
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, intl, pdo_mysql
+          key: ${{ env.key }}
+
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.extcache.outputs.dir }}
+          key: ${{ steps.extcache.outputs.key }}
+          restore-keys: ${{ steps.extcache.outputs.key }}
 
       - name: Setup PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
@@ -82,7 +142,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl, pdo_mysql
 
-      - name: Cache extensions
+      - name: Cache composer dependencies
         uses: actions/cache@v4
         with:
           key: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
