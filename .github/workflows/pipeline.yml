@@ -15,24 +15,33 @@ env:
 
 jobs:
   composer:
-    uses: ./.github/workflows/composersteps.yml
-    with:
-      php-version: "8.4"
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Run common steps
+        uses: ./.github/actions/common-steps/
+        with:
+          php-version: "8.4"
 
   lint:
-    uses: ./.github/workflows/composersteps.yml
-    with:
-      php-version: "8.4"
     needs: composer
+    runs-on: ubuntu-20.04
+
     steps:
+      - name: Run common steps
+        uses: ./.github/actions/common-steps/
+        with:
+          php-version: "8.4"
       - name: Php lint
         run: composer lint-ci
 
   test:
-    uses: ./.github/workflows/composersteps.yml
-    with:
-      php-version: "8.4"
     needs: composer
+    runs-on: ubuntu-20.04
+
     steps:
+      - name: Run common steps
+        uses: ./.github/actions/common-steps/
+        with:
+          php-version: "8.4"
       - name: Php Pest
         run: composer test-ci
