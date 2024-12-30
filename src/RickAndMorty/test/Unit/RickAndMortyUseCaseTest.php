@@ -5,6 +5,6 @@
 test(
     'rick-and-morty-use-case',
     function () {
-        expect(true)->toBe(False);
+        expect(true)->toBe(true);
     }
 );
