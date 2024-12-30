@@ -15,9 +15,6 @@ env:
 runs:
   using: "composite"
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
     - name: Setup cache environment
       id: extcache
       uses: shivammathur/cache-extensions@v1
