@@ -9,6 +9,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+.envs_common: &envs_common
+  extensions: mbstring, intl, pdo_mysql
+  key: cache-v1
+
 jobs:
   composer:
     runs-on: ubuntu-20.04
@@ -18,8 +22,7 @@ jobs:
         php-version: [8.4]
 
     env:
-      extensions: mbstring, intl, pdo_mysql
-      key: cache-v1
+      <<: *envs_common
 
     steps:
       - name: Checkout repository
