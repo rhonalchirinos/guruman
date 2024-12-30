@@ -8,6 +8,10 @@ on:
 jobs:
   avoid_reduncy:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        php-version: [8.4]
+
     steps:
       - name: token       
         run: echo "${{ vars.CANCEL_TOKEN }}...."
@@ -15,7 +19,7 @@ jobs:
       - name: Cancel Previous Redundant Builds
         uses: action-pack/cancel@v1
         with:
-          token: ${{ secrets.CANCEL_TOKEN }}
+          token: ${{ vars.CANCEL_TOKEN }}
   build:
     runs-on: ubuntu-20.04
     strategy:
