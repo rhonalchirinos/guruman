@@ -1,0 +1,53 @@
+name: Install php and composer
+
+on:
+  workflow_call:
+    inputs:
+      php-version:
+        required: true
+        type: string
+
+jobs:
+  setup:
+    runs-on: ubuntu-20.04
+    env:
+      extensions: mbstring, intl, pdo_mysql
+      key: cache-v1
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup cache environment
+        id: extcache
+        uses: shivammathur/cache-extensions@v1
+        with:
+          php-version: ${{ inputs.php-version }}
+          extensions: ${{ env.extensions }}
+          key: ${{ env.key }}
+
+      - name: Cache extensions
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.extcache.outputs.dir }}
+          key: ${{ steps.extcache.outputs.key }}
+          restore-keys: |
+            ${{ steps.extcache.outputs.key }}
+
+      - name: Setup PHP ${{ inputs.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ inputs.php-version }}
+          extensions: ${{ env.extensions }}
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v3
+        with:
+          key: composer-${{ hashFiles('**/composer.lock') }}-php-${{ inputs.php-version }}
+          path: |
+            ~/.composer/cache
+            vendor
+          restore-keys: |
+            composer-${{ hashFiles('**/composer.lock') }}-php-${{ inputs.php-version }}
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
