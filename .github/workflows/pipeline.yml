@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: token       
-        run: echo "${{ secrets.CANCEL_TOKEN }}...."
+        run: echo "${{ vars.CANCEL_TOKEN }}...."
 
       - name: Cancel Previous Redundant Builds
         uses: action-pack/cancel@v1
         with:
-          token: ${{ secrets.CANCEL_TOKEN }}
+          token: ${{ vars.CANCEL_TOKEN }}
 
   build:
     runs-on: ubuntu-20.04
