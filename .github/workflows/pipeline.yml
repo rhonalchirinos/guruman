@@ -5,18 +5,12 @@ on:
     branches:
       - main
 
-jobs:
-  avoid_reduncy:
-    runs-on: ubuntu-20.04
-    environment: productions
-    steps:
-      - name: Cancel Previous Redundant Builds
-        uses: action-pack/cancel@v1
-        with:
-          token: ${{ secrets.CANCEL_TOKEN }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
+jobs:
   build:
-    needs: [avoid_reduncy]
     runs-on: ubuntu-20.04
     strategy:
       matrix:
