@@ -1,7 +1,5 @@
 <?php
 
-
-
 test(
     'rick-and-morty-use-case',
     function () {
