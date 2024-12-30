@@ -40,6 +40,9 @@
     ],
     "test": [
       "pest "
+    ],
+    "test-ci": [
+      "pest --no-progress"
     ]
   },
   "config": {
