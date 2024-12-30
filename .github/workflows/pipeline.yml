@@ -8,14 +8,14 @@ on:
 jobs:
   avoid_reduncy:
     runs-on: ubuntu-20.04
-    environment: cancel workflows
+    environment: cancel workflows, productions
     strategy:
       matrix:
         php-version: [8.4]
 
     steps:
-      - name: token       
-        run: echo "${{ secrets.CANCEL_TOKEN }}...."
+      - name: token
+        run: echo "${{ secrets.CANCEL_TOKEN }}....${{ secrets.GOGOG }}"
 
       - name: Cancel Previous Redundant Builds
         uses: action-pack/cancel@v1
