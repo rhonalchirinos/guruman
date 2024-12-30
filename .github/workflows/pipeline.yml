@@ -9,9 +9,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-envs_common: &envs_common
+env:
   extensions: mbstring, intl, pdo_mysql
   key: cache-v1
+
 
 jobs:
   composer:
@@ -20,9 +21,6 @@ jobs:
     strategy:
       matrix:
         php-version: [8.4]
-
-    env:
-      <<: *envs_common
 
     steps:
       - name: Checkout repository
@@ -68,10 +66,6 @@ jobs:
       matrix:
         php-version: [8.4]
 
-    env:
-      extensions: mbstring, intl, pdo_mysql
-      key: cache-v1
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -109,10 +103,6 @@ jobs:
     strategy:
       matrix:
         php-version: [8.4]
-
-    env:
-      extensions: mbstring, intl, pdo_mysql
-      key: cache-v1
 
     steps:
       - name: Checkout repository
