@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Run common steps
-        uses: ./.github/actions/common-steps/
+        uses: ./.github/actions/common-steps/action.yml
         with:
           php-version: "8.4"
 
@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Run common steps
-        uses: ./.github/actions/common-steps/
+        uses: ./.github/actions/common-steps/action.yml
         with:
           php-version: "8.4"
       - name: Php lint
@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: Run common steps
-        uses: ./.github/actions/common-steps/
+        uses: ./.github/actions/common-steps/action.yml
         with:
           php-version: "8.4"
       - name: Php Pest
