@@ -48,6 +48,3 @@ runs:
           vendor
         restore-keys: |
           composer-${{ hashFiles('**/composer.lock') }}-php-${{ inputs.php-version }}
-
-    - name: Install Composer dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader

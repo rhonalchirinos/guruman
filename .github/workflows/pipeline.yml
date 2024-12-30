@@ -28,6 +28,9 @@ jobs:
         with:
           php-version: "8.4"
 
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
+
   lint:
     needs: composer
     runs-on: ubuntu-20.04
