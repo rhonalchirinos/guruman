@@ -17,9 +17,6 @@ runs:
   using: "composite"
 
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
     - name: Show locals
       run: pwd && ls -la && ls .github/actions/common-steps/ -la && more /home/runner/work/guruman/guruman/.github/actions/common-steps/action.yml
 
