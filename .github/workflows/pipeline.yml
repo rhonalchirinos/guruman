@@ -10,8 +10,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  composer:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        php-version: [8.4]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          extensions: mbstring, intl, pdo_mysql
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
+
   lint:
     runs-on: ubuntu-20.04
+    needs: composer
     strategy:
       matrix:
         php-version: [8.4]
@@ -31,8 +50,9 @@ jobs:
       - name: Php lint
         run: composer lint-ci
 
-  build:
+  test:
     runs-on: ubuntu-20.04
+    needs: composer
     strategy:
       matrix:
         php-version: [8.4]
