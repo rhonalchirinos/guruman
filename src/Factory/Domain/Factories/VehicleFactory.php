@@ -13,5 +13,5 @@ abstract class VehicleFactory
     /**
      * 
      */
-    public abstract function createVehicle(string $type = null): ?Vehicle;
+    public abstract function createVehicle(?string $type = null): ?Vehicle;
 }

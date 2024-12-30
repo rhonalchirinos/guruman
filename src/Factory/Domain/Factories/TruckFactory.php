@@ -15,7 +15,7 @@ class TruckFactory extends VehicleFactory
     /**
      * 
      */
-    public function createVehicle(string $type = null): ?Vehicle
+    public function createVehicle(?string $type = null): ?Vehicle
     {
         $faker = Faker\Factory::create();
 

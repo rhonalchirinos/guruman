@@ -26,5 +26,7 @@ jobs:
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
 
       - name: Php Pest
-        run: ls -la && ./vendor/bin/pest
-        
+        run: composer lint-ci
+
+      - name: Php Pest
+        run: ./vendor/bin/pest
