@@ -1,9 +1,6 @@
 # Directorio de dependencias de Composer
 /vendor/
 
-# Archivos de Composer
-composer.lock
-
 # Archivos de configuración sensibles
 .env
 .env.local
@@ -31,10 +28,6 @@ storage/sessions/
 # Subidas
 storage/uploads/
 uploads/
-
-# Testeo (PHPUnit)
-phpunit.xml
-phpunit.xml.dist
 
 # Archivos de IDEs
 .vscode/
