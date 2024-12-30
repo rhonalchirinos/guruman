@@ -6,6 +6,12 @@ on:
       - main
 
 jobs:
+  avoid_reduncy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Cancel Previous Redundant Builds
+        uses: action-pack/cancel@v1
+
   build:
     runs-on: ubuntu-20.04
     strategy:
