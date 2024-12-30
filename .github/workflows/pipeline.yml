@@ -3,7 +3,7 @@ name: Guru Man
 on:
   push:
     branches:
-      - main
+      - production
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
