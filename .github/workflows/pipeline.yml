@@ -25,6 +25,15 @@ jobs:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl, pdo_mysql
 
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          key: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
+          path: |
+            ~/.composer/cache
+            vendor
+          restore-keys: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
+
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
 
@@ -43,6 +52,15 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl, pdo_mysql
+
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          key: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
+          path: |
+            ~/.composer/cache
+            vendor
+          restore-keys: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
@@ -66,6 +84,15 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           extensions: mbstring, intl, pdo_mysql
+
+      - name: Cache extensions
+        uses: actions/cache@v4
+        with:
+          key: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
+          path: |
+            ~/.composer/cache
+            vendor
+          restore-keys: composer-${{ hashFiles('**/composer.lock') }}-php-${{ matrix.php-version }}
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest --optimize-autoloader
