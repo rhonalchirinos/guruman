@@ -62,3 +62,10 @@ jobs:
 
       - name: Php Pest
         run: composer test-ci
+
+  build:
+    needs: [test, lint]
+    runs-on: [self-hosted, production]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4

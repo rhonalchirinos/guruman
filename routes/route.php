@@ -10,10 +10,11 @@ $app->get(
     '/',
     function (Request $request, Response $response, $args) {
 
-        $response->getBody()->write("Hello world rhonal!");
+        $response->getBody()->write("V1- Hello world rhonal!");
         return $response;
     }
 );
+
 
 $app->get('/factory', FactoryAction::class . ':home');
 
