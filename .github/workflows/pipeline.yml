@@ -69,3 +69,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Copy code to /var/www/guruman
+        run: |
+          sudo cp -R . /var/www/guruman
+          # Alternatively: sudo rsync -avz . /var/www/guruman
+
+      - name: Change permisions and ownership
+        run: |
+          sudo chown -R www-data:www-data /var/www/guruman && sudo chmod -R 755 /var/www/guruman
